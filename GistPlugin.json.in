@@ -1,0 +1,12 @@
+{
+    \"Name\" : \"GistPlugin\",
+    \"Version\" : \"0.0.1\",
+    \"CompatVersion\" : \"0.0.1\",
+    \"Vendor\" : \"JustCxx\",
+    \"Copyright\" : \"(C) Vasiliy I.Kolesnikov\",
+    \"License\" : \"The MIT License (MIT)\",
+    \"Description\" : \"GitHub Gist service integration plugin\",
+    \"Url\" : \"https://github.com/justCxx\",
+    $$dependencyList
+}
+
