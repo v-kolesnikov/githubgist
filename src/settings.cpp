@@ -45,5 +45,5 @@ bool Settings::isAnonymous() const
             || token.isEmpty());
 }
 
-} // namespaceGists
 } // namespace Internal
+} // namespace GitHubGist

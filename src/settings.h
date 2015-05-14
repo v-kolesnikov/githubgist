@@ -33,6 +33,6 @@ inline bool operator!=(const Settings &s1, const Settings &s2)
     return !s1.equals(s2);
 }
 
-} // namespaceGists
 } // namespace Internal
+} // namespace GitHubGist
 #endif // SETTINGS_H

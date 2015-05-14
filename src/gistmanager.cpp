@@ -10,7 +10,8 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-using namespace GitHubGist::Internal;
+namespace GitHubGist {
+namespace Internal {
 
 QLatin1String API_BASE_URL("https://api.github.com");
 QLatin1String API_GIST("/gists");
@@ -101,3 +102,5 @@ void GistManager::apiResponse()
     reply->deleteLater();
 }
 
+} // namespace Internal
+} // namespace GitHubGist
