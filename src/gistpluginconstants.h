@@ -3,7 +3,7 @@
 
 #include <QtGlobal>
 
-namespace Gists {
+namespace GitHubGist {
 namespace Constants {
 
 const char CREATE_PUBLIC_ACTION_ID[] = "GistPlugin.CreatePublicGist";

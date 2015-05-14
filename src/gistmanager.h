@@ -11,7 +11,7 @@ class QNetworkAccessManager;
 class QNetworkRequest;
 QT_END_NAMESPACE
 
-namespace Gists {
+namespace GitHubGist {
 namespace Internal {
 
 class GistManager : public QObject
@@ -22,9 +22,6 @@ public:
 
     void postGist(const QString &text, const QString &gistName,
                   const QString &fileName, bool publicFlag = false);
-
-    void setUserName(const QString &name);
-    void setOAuthToken(const QString &token);
 
 signals:
     void gistPosted(const QString &name, const QString &url);
@@ -39,6 +36,6 @@ private:
 };
 
 } // namespace Internal
-} // namespace Gists
+} // namespace GitHubGist
 
 #endif // GISTSMANAGER_H

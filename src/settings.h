@@ -5,7 +5,7 @@
 
 class QSettings;
 
-namespace Gists {
+namespace GitHubGist {
 namespace Internal {
 
 class Settings

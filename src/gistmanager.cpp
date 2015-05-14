@@ -10,7 +10,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-using namespace Gists::Internal;
+using namespace GitHubGist::Internal;
 
 QLatin1String API_BASE_URL("https://api.github.com");
 QLatin1String API_GIST("/gists");

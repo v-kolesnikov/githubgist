@@ -12,7 +12,7 @@ namespace Ui {
 class OptionsWidget;
 }
 
-namespace Gists {
+namespace GitHubGist {
 namespace Internal {
 
 /*!
@@ -57,6 +57,6 @@ private:
 };
 
 } // namespace Internal
-} // namespace Gists
+} // namespace GitHubGist
 
 #endif // SETTINGSPAGE_H

@@ -26,7 +26,7 @@
 
 using namespace Core;
 using namespace TextEditor;
-namespace Gists {
+namespace GitHubGist {
 namespace Internal {
 
 GistPlugin::GistPlugin() :
@@ -196,4 +196,4 @@ QString GistPlugin::currentFileName()
 }
 
 } // namespace Internal
-} // namespace Gists
+} // namespace GitHubGist

@@ -12,7 +12,7 @@ QT_BEGIN_NAMESPACE
 class QAction;
 QT_END_NAMESPACE
 
-namespace Gists {
+namespace GitHubGist {
 namespace Internal {
 
 class GistManager;
@@ -21,7 +21,7 @@ class OptionsPage;
 class GistPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "GistPlugin.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "GitHubGist.json")
 
 public:
     GistPlugin();
@@ -47,7 +47,7 @@ private:
 };
 
 } // namespace Internal
-} // namespace Gists
+} // namespace GitHubGist
 
 #endif // GISTPLUGIN_H
 

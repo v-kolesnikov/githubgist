@@ -2,7 +2,7 @@
 
 #include <QSettings>
 
-namespace Gists {
+namespace GitHubGist {
 namespace Internal {
 
 QLatin1String SETTINGS_GROUP("GitHubGist");

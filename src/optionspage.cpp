@@ -4,7 +4,7 @@
 
 #include <coreplugin/icore.h>
 
-namespace Gists {
+namespace GitHubGist {
 namespace Internal {
 
 OptionsWidget::OptionsWidget(QWidget *parent) :
@@ -79,4 +79,4 @@ void OptionsPage::finish()
 }
 
 } // namespace Internal
-} // namespace Gists
+} // namespace GitHubGist

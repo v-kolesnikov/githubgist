@@ -1,8 +1,6 @@
-DEFINES += GISTPLUGIN_LIBRARY
+DEFINES += GITHUBGIST_LIBRARY
 
-QT += network
-
-# GistPlugin files
+# GitHubGist files
 
 SOURCES += \
     src/gistplugin.cpp \
@@ -36,30 +34,10 @@ isEmpty(IDE_BUILD_TREE):IDE_BUILD_TREE=
 ##    "~/Library/Application Support/QtProject/Qt Creator" on Mac
 # USE_USER_DESTDIR = yes
 
-###### If the plugin can be depended upon by other plugins, this code needs to be outsourced to
-###### <dirname>_dependencies.pri, where <dirname> is the name of the directory containing the
-###### plugin's sources.
-
-QTC_PLUGIN_NAME = GistPlugin
-QTC_LIB_DEPENDS += \
-    extensionsystem \
-    utils
-    # nothing here at this time
-
-QTC_PLUGIN_DEPENDS += \
-    coreplugin \
-    projectexplorer \
-    texteditor
-
-QTC_PLUGIN_RECOMMENDS += \
-    # optional plugin dependencies. nothing here at this time
-
-###### End _dependencies.pri contents ######
-
 include($$QTCREATOR_SOURCES/src/qtcreatorplugin.pri)
 
 FORMS += \
     src/optionspage.ui
 
 RESOURCES += \
-    gistplugin.qrc
+    githubgist.qrc
