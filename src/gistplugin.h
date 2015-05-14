@@ -31,15 +31,13 @@ public:
     void extensionsInitialized();
     ShutdownFlag aboutToShutdown();
 
-    void createGist(bool publicFlag = true);
+    void createGist();
 
 private:
     void createMenu();
     void createOptionsPage();
-    void createSecretGist();
     void showMessage(const QString &message);
     void gistCreated(const QString &name, const QString &url);
-    QString currentFileName();
 
     const QSharedPointer<Settings> m_settings;
     GistManager *m_gistManager;

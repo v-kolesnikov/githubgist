@@ -22,10 +22,10 @@
 #include <QClipboard>
 #include <QDebug>
 #include <QMenu>
-#include <QTextDocument>
 
 using namespace Core;
 using namespace TextEditor;
+
 namespace GitHubGist {
 namespace Internal {
 
@@ -82,12 +82,18 @@ ExtensionSystem::IPlugin::ShutdownFlag GistPlugin::aboutToShutdown()
     return SynchronousShutdown;
 }
 
-static inline void textFromCurrentEditor(QString *text)
+static inline void textFromCurrentEditor(QString *text, QString *fileName = 0)
 {
     IEditor *editor = EditorManager::currentEditor();
     if (!editor)
         return;
+
     const IDocument *document = editor->document();
+
+    if (fileName) {
+        *fileName = editor->document()->filePath().fileName();
+    }
+
     QString data;
     if (const BaseTextEditor *textEditor = qobject_cast<const BaseTextEditor *>(editor))
         data = textEditor->selectedText();
@@ -127,19 +133,20 @@ static inline void fixSpecialCharacters(QString &data)
     }
 }
 
-void GistPlugin::createGist(bool publicFlag)
+void GistPlugin::createGist()
 {
     QString text;
-    textFromCurrentEditor(&text);
-    fixSpecialCharacters(text);
+    QString fileName;
 
-    QString fileName = currentFileName();
+    textFromCurrentEditor(&text, &fileName);
+    fixSpecialCharacters(text);
 
     if (text.isEmpty() || fileName.isEmpty()) {
         showMessage(tr("Gist not created. None of the selected text."));
         return;
     }
 
+    bool publicFlag = sender()->property("public").toBool();
     m_gistManager->postGist(text, fileName, fileName, publicFlag);
 }
 
@@ -147,6 +154,7 @@ void GistPlugin::createMenu()
 {
     QAction *createPublicAction = new QAction(QIcon(QLatin1String(":/images/gist.png")),
                                               tr("Create gist"), this);
+    createPublicAction->setProperty("public", true);
     Command *createPublicGistCmd = ActionManager::registerAction(createPublicAction,
                                                                  Constants::CREATE_PUBLIC_ACTION_ID,
                                                                  Context(Core::Constants::C_EDIT_MODE));
@@ -155,10 +163,11 @@ void GistPlugin::createMenu()
 
     QAction *createSecretAction = new QAction(QIcon(QLatin1String(":/images/gist-secret.png")),
                                               tr("Create secret gist"), this);
+    createSecretAction->setProperty("public", false);
     Command *createSecretGistCmd = ActionManager::registerAction(createSecretAction,
                                                                  Constants::CREATE_SECRET_ACTION_ID,
                                                                  Context(Core::Constants::C_EDIT_MODE));
-    connect(createSecretAction, &QAction::triggered, this, &GistPlugin::createSecretGist);
+    connect(createSecretAction, &QAction::triggered, this, &GistPlugin::createGist);
 
     ActionContainer *gistsMenu = ActionManager::createMenu(Constants::GIST_TOOLS_MENU_ID);
     gistsMenu->menu()->setTitle(tr("GitHub Gist"));
@@ -173,11 +182,6 @@ void GistPlugin::createOptionsPage()
     addAutoReleasedObject(m_optionsPage);
 }
 
-void GistPlugin::createSecretGist()
-{
-    createGist(false);
-}
-
 void GistPlugin::showMessage(const QString &message)
 {
     MessageManager::write(message);
@@ -189,14 +193,6 @@ void GistPlugin::gistCreated(const QString &name, const QString &url)
         QApplication::clipboard()->setText(url);
     }
     showMessage(tr("Gist \"%1\" posted: ").arg(name) + url);
-}
-
-QString GistPlugin::currentFileName()
-{
-    IEditor *editor = EditorManager::currentEditor();
-    if (!editor)
-        return QString();
-    return editor->document()->filePath().fileName();
 }
 
 } // namespace Internal
