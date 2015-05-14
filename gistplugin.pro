@@ -1,22 +1,32 @@
 DEFINES += GISTPLUGIN_LIBRARY
 
+QT += network
+
 # GistPlugin files
 
-SOURCES += src/gistplugin.cpp
+SOURCES += \
+    src/gistplugin.cpp \
+    src/gistmanager.cpp \
+    src/optionspage.cpp \
+    src/settings.cpp
 
-HEADERS += src/gistplugin.h \
-        src/gistplugin_global.h \
-        src/gistpluginconstants.h
+HEADERS += \
+    src/gistplugin.h \
+    src/gistplugin_global.h \
+    src/gistpluginconstants.h \
+    src/gistmanager.h \
+    src/optionspage.h \
+    src/settings.h
 
 # Qt Creator linking
 
 ## set the QTC_SOURCE environment variable to override the setting here
 QTCREATOR_SOURCES = $$(QTC_SOURCE)
-isEmpty(QTCREATOR_SOURCES):QTCREATOR_SOURCES=/home/dust/dev/tools/qt-builds/qt-creator/qt-creator
+isEmpty(QTCREATOR_SOURCES):QTCREATOR_SOURCES=
 
 ## set the QTC_BUILD environment variable to override the setting here
 IDE_BUILD_TREE = $$(QTC_BUILD)
-isEmpty(IDE_BUILD_TREE):IDE_BUILD_TREE=/home/dust/dev/tools/qt-builds/qt-creator/qt-creator
+isEmpty(IDE_BUILD_TREE):IDE_BUILD_TREE=
 
 ## uncomment to build plugin into user config directory
 ## <localappdata>/plugins/<ideversion>
@@ -32,10 +42,14 @@ isEmpty(IDE_BUILD_TREE):IDE_BUILD_TREE=/home/dust/dev/tools/qt-builds/qt-creator
 
 QTC_PLUGIN_NAME = GistPlugin
 QTC_LIB_DEPENDS += \
+    extensionsystem \
+    utils
     # nothing here at this time
 
 QTC_PLUGIN_DEPENDS += \
-    coreplugin
+    coreplugin \
+    projectexplorer \
+    texteditor
 
 QTC_PLUGIN_RECOMMENDS += \
     # optional plugin dependencies. nothing here at this time
@@ -43,3 +57,9 @@ QTC_PLUGIN_RECOMMENDS += \
 ###### End _dependencies.pri contents ######
 
 include($$QTCREATOR_SOURCES/src/qtcreatorplugin.pri)
+
+FORMS += \
+    src/optionspage.ui
+
+RESOURCES += \
+    gistplugin.qrc

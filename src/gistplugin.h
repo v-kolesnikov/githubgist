@@ -2,31 +2,52 @@
 #define GISTPLUGIN_H
 
 #include "gistplugin_global.h"
+#include "settings.h"
 
 #include <extensionsystem/iplugin.h>
 
-namespace GistPlugin {
+#include <QSharedPointer>
+
+QT_BEGIN_NAMESPACE
+class QAction;
+QT_END_NAMESPACE
+
+namespace Gists {
 namespace Internal {
 
-class GistPluginPlugin : public ExtensionSystem::IPlugin
+class GistManager;
+class OptionsPage;
+
+class GistPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "GistPlugin.json")
 
 public:
-    GistPluginPlugin();
-    ~GistPluginPlugin();
+    GistPlugin();
+    ~GistPlugin();
 
     bool initialize(const QStringList &arguments, QString *errorString);
     void extensionsInitialized();
     ShutdownFlag aboutToShutdown();
 
-private slots:
-    void triggerAction();
+    void createGist(bool publicFlag = true);
+
+private:
+    void createMenu();
+    void createOptionsPage();
+    void createSecretGist();
+    void showMessage(const QString &message);
+    void gistCreated(const QString &name, const QString &url);
+    QString currentFileName();
+
+    const QSharedPointer<Settings> m_settings;
+    GistManager *m_gistManager;
+    OptionsPage *m_optionsPage;
 };
 
 } // namespace Internal
-} // namespace GistPlugin
+} // namespace Gists
 
 #endif // GISTPLUGIN_H
 
