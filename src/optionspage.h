@@ -31,6 +31,8 @@ public:
     Settings settings();
 
 private:
+    void openGitHubSignUp();
+    void openGitHubTokens();
     Ui::OptionsWidget *m_ui;
 };
 

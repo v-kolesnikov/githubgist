@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>646</width>
     <height>300</height>
    </rect>
   </property>
@@ -16,15 +16,15 @@
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="labelUserName">
-       <property name="text">
-        <string>Username:</string>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="tokenEdit">
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+       <property name="placeholderText">
+        <string>Required scope: gist, user, user:email</string>
        </property>
       </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="userEdit"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="labelOAuthToken">
@@ -33,10 +33,31 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="tokenEdit">
-       <property name="echoMode">
-        <enum>QLineEdit::Normal</enum>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="userEdit">
+       <property name="placeholderText">
+        <string>GitHub username</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelUserName">
+       <property name="text">
+        <string>Username:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="tokensButton">
+       <property name="text">
+        <string>Tokens</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="signUpButton">
+       <property name="text">
+        <string>Sign Up</string>
        </property>
       </widget>
      </item>
@@ -51,7 +72,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string/>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

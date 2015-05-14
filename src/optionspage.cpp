@@ -4,6 +4,9 @@
 
 #include <coreplugin/icore.h>
 
+#include <QDesktopServices>
+#include <QUrl>
+
 namespace GitHubGist {
 namespace Internal {
 
@@ -13,6 +16,9 @@ OptionsWidget::OptionsWidget(QWidget *parent) :
 {
     m_ui->setupUi(this);
     m_ui->footerLabel->setPixmap(QPixmap(QLatin1String(":/images/octocat.png")));
+
+    connect(m_ui->signUpButton, &QPushButton::clicked, this, &OptionsWidget::openGitHubSignUp);
+    connect(m_ui->tokensButton, &QPushButton::clicked, this, &OptionsWidget::openGitHubTokens);
 }
 
 OptionsWidget::~OptionsWidget()
@@ -34,6 +40,16 @@ Settings OptionsWidget::settings()
     settings.token = m_ui->tokenEdit->text();
     settings.autoCopyLink = m_ui->copyLinkBox->isChecked();
     return settings;
+}
+
+void OptionsWidget::openGitHubSignUp()
+{
+    QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/join")));
+}
+
+void OptionsWidget::openGitHubTokens()
+{
+    QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/settings/tokens")));
 }
 
 OptionsPage::OptionsPage(const QSharedPointer<Settings> &settings, QObject *parent) :
