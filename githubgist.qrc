@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/Github-icon.png</file>
         <file>images/octocat.png</file>
+        <file>images/gist-secret.png</file>
+        <file>images/gist.png</file>
     </qresource>
 </RCC>

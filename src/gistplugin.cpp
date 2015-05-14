@@ -145,14 +145,18 @@ void GistPlugin::createGist(bool publicFlag)
 
 void GistPlugin::createMenu()
 {
-    QAction *createPublicAction = new QAction(tr("Create gist"), this);
-    Command *createPublicGistCmd = ActionManager::registerAction(createPublicAction, Constants::CREATE_PUBLIC_ACTION_ID,
-                                                           Context(Core::Constants::C_EDIT_MODE));
+    QAction *createPublicAction = new QAction(QIcon(QLatin1String(":/images/gist.png")),
+                                              tr("Create gist"), this);
+    Command *createPublicGistCmd = ActionManager::registerAction(createPublicAction,
+                                                                 Constants::CREATE_PUBLIC_ACTION_ID,
+                                                                 Context(Core::Constants::C_EDIT_MODE));
     createPublicGistCmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+Alt+G")));
     connect(createPublicAction, &QAction::triggered, this, &GistPlugin::createGist);
 
-    QAction *createSecretAction = new QAction(tr("Create secret gist"), this);
-    Command *createSecretGistCmd = ActionManager::registerAction(createSecretAction, Constants::CREATE_SECRET_ACTION_ID,
+    QAction *createSecretAction = new QAction(QIcon(QLatin1String(":/images/gist-secret.png")),
+                                              tr("Create secret gist"), this);
+    Command *createSecretGistCmd = ActionManager::registerAction(createSecretAction,
+                                                                 Constants::CREATE_SECRET_ACTION_ID,
                                                                  Context(Core::Constants::C_EDIT_MODE));
     connect(createSecretAction, &QAction::triggered, this, &GistPlugin::createSecretGist);
 

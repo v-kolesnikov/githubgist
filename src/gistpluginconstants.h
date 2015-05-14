@@ -12,10 +12,10 @@ const char GIST_TOOLS_MENU_ID[] = "GistPlugin.Menu";
 
 const char GIST_SETTINGS_CATEGORY[] = "GithubGist";
 const char GIST_SETTINGS_TR_CATEGORY[] = "GithubGist";
-const char GIST_SETTINGS_CATEGORY_ICON[] = ":/images/Github-icon.png";
+const char GIST_SETTINGS_CATEGORY_ICON[] = ":/images/gist.png";
 
-} // namespace GistPlugin
 } // namespace Constants
+} // namespace GitHubGist
 
 #endif // GISTPLUGINCONSTANTS_H
 
