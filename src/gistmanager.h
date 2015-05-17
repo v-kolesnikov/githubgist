@@ -23,6 +23,9 @@ public:
     void postGist(const QString &text, const QString &gistName,
                   const QString &fileName, bool publicFlag = false);
 
+    void postGist(const QStringList &files, const QString &gistName,
+                  bool publicFlag = false);
+
 signals:
     void gistPosted(const QString &name, const QString &url);
     void apiError(const QString &error);

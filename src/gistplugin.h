@@ -12,6 +12,10 @@ QT_BEGIN_NAMESPACE
 class QAction;
 QT_END_NAMESPACE
 
+namespace ProjectExplorer {
+class Node;
+}
+
 namespace GitHubGist {
 namespace Internal {
 
@@ -31,13 +35,15 @@ public:
     void extensionsInitialized();
     ShutdownFlag aboutToShutdown();
 
-    void createGist();
+    void createGistFromText();
+    void createGistFromNode();
 
 private:
-    void createMenu();
-    void createOptionsPage();
-    void showMessage(const QString &message);
-    void gistCreated(const QString &name, const QString &url);
+    void initMenus();
+    void initOptionsPage();
+    void showMessage(const QString &message) const;
+    void gistCreated(const QString &name, const QString &url) const;
+    QStringList nodeFiles(const ProjectExplorer::Node *node) const;
 
     const QSharedPointer<Settings> m_settings;
     GistManager *m_gistManager;

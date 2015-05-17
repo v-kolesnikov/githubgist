@@ -2,6 +2,8 @@
 
 #include <utils/networkaccessmanager.h>
 
+#include <QFile>
+#include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -54,7 +56,36 @@ void GistManager::postGist(const QString &text, const QString &gistName,
     postData.insert(JSON_PUBLIC, publicFlag);
 
     QNetworkReply *reply = m_nam->post(request, QJsonDocument(postData).toJson());
+    connect(reply, &QNetworkReply::finished, this, &GistManager::apiResponse);
+}
 
+void GistManager::postGist(const QStringList &files, const QString &gistName, bool publicFlag)
+{
+    QNetworkRequest request(QUrl(API_BASE_URL + API_GIST));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QByteArray("application/json"));
+
+    if (!m_settings->isAnonymous()) {
+        setAuthHeader(&request);
+    }
+
+    QJsonObject gistFilesJson;
+
+    for (auto fileName : files) {
+        QFile file(fileName);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QFileInfo fileInfo(file);
+            QJsonObject gistFileJson;
+            gistFileJson.insert(JSON_CONTENT, QLatin1String(file.readAll()));
+            gistFilesJson.insert(fileInfo.fileName(), gistFileJson);
+        }
+    }
+
+    QJsonObject postData;
+    postData.insert(JSON_FILES, gistFilesJson);
+    postData.insert(JSON_DESCR, gistName);
+    postData.insert(JSON_PUBLIC, publicFlag);
+
+    QNetworkReply *reply = m_nam->post(request, QJsonDocument(postData).toJson());
     connect(reply, &QNetworkReply::finished, this, &GistManager::apiResponse);
 }
 

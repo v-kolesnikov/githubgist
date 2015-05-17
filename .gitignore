@@ -36,6 +36,12 @@ Makefile*
 # Operating System Files
 # =========================
 
+# Linux
+#==========================
+
+# KDE
+.directory
+
 # OSX
 # =========================
 
