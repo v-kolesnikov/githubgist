@@ -8,6 +8,7 @@ namespace Constants {
 
 const char CREATE_PUBLIC_ACTION_ID[] = "GistPlugin.CreatePublicGist";
 const char CREATE_SECRET_ACTION_ID[] = "GistPlugin.CreateSecretGist";
+const char CREATE_GIST_FROM_NODE[] = "GistPlugin.CreateGistFromNode";
 const char GIST_TOOLS_MENU_ID[] = "GistPlugin.Menu";
 
 const char GIST_SETTINGS_CATEGORY[] = "GithubGist";
