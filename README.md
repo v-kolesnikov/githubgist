@@ -1,7 +1,5 @@
 #QtCreator GitHubGist plugin
 
-[![Download QtcGistPlugin](https://img.shields.io/sourceforge/dt/qtcgistplugin.svg)](https://sourceforge.net/projects/qtcgistplugin/files/latest/download)
-
 ##Introduction
 Plugin integrates some [Gist](https://gist.github.com/ "Gist") functionality into QtCreator IDE.
 
