@@ -29,3 +29,7 @@ Built plugin can be downloaded [here][a4aa694e]
 Additional information can be obtained [here][f50d083b]
 
   [f50d083b]: https://vk.com/qtdev "QtDevClub"
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/justCxx/githubgist/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
