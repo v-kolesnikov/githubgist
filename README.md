@@ -1,7 +1,7 @@
 #QtCreator GitHubGist plugin
 
 ##Introduction
-Plugin integrates some [Gist](https://gist.github.com/ "Gist") functionality into QtCreator IDE.
+Plugin integrates some [Gist](https://gist.github.com/ "Gist") functionality into [QtCreator](http://www.qt.io/ide/) IDE.
 
 ![GitHubGist QtCreator plugin](https://cloud.githubusercontent.com/assets/6506296/7642048/8d17e120-fa96-11e4-9c1d-8aa18cc93325.png)
 
